@@ -1,7 +1,7 @@
 var questions = [
     {
         questionNo : 1,
-        questionText : "text",
+        questionText : "text1",
         answers : ["answer1", "answer2", "answer3", "answer4"],
         correctAns : 1,
         correctGif : "",
@@ -9,13 +9,13 @@ var questions = [
     },
     {
         questionNo : 2,
-        questionText : "text",
+        questionText : "text2",
         answers : ["answer1", "answer2", "answer3", "answer4"],
         correctAns : 1
     },
     {
         questionNo : 3,
-        questionText : "text",
+        questionText : "text3",
         answers : ["answer1", "answer2", "answer3", "answer4"],
         correctAns : 1
     }
@@ -23,25 +23,39 @@ var questions = [
 
 var intervalId;
 var clockRunning = false;
-var timeLeft = 3;
+var gameOver = false;
+var timeLeft = 10;
+var score = 0;
 var currentQuestion = 0;
 
 loadQuestion(currentQuestion);
 
 $(document).on("click", ".answer", function(){
-    timeLeft = 10;
-    
-    if ($(this).text() === questions[currentQuestion].answers[questions[currentQuestion].correctAns]){
-        console.log("correct");
-        loadQuestion(currentQuestion);
-        ++currentQuestion;
-    }else
-        console.log('wrong');
-
-    (currentQuestion === questions.length)?console.log("Game Over"):"";
-    
-
+    if(gameOver === false){
+        
+        if ($(this).text() === questions[currentQuestion].answers[questions[currentQuestion].correctAns]){
+            console.log("correct");
+            ++score;
+            nextQuestion();  
+        }else{
+            console.log('wrong');
+            nextQuestion();
+        }
+    }
 });
+
+function nextQuestion(){
+    timeLeft = 10;
+    ++currentQuestion;
+    (currentQuestion === questions.length)?endGame():loadQuestion(currentQuestion);
+}
+
+function endGame(){
+    console.log("Game Over")
+    console.log(`Score: ${score}`)
+    stopTimer();
+    gameOver = true;
+}
 
 //Load first question and start timer
 function loadQuestion(index){
@@ -60,21 +74,23 @@ function loadQuestion(index){
 
 function startTimer() {
     if (!clockRunning) {
-      intervalId = setInterval(count, 1000);
+      intervalId = setInterval(countTimer, 1000);
       clockRunning = true;
     }
   }
 
-function stop() {
+function stopTimer() {
     clearInterval(intervalId);
     clockRunning = false;
-    $("#timer").text("Times Up!!!");
 }
 
-function count() {
+function countTimer() {
     timeLeft--;
   
     $("#timer").text(timeLeft);
-    (timeLeft === 0)?clockRunning = stop():"";
+    if (timeLeft === 0){
+        stopTimer();
+        nextQuestion();
+    }
   }
   
