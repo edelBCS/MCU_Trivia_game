@@ -1,14 +1,14 @@
 var questions = [
     {
         questionNo : 1,
-        questionText : "text1",
+        questionText : "What is the name of the terrorist organization that kidnaps Tony Stark?",
         answers : [
-            "answer1", 
-            "answer2", 
-            "answer3", 
-            "answer4"
+            "The Ten Rings", 
+            "Manderin Assassins", 
+            "ISIS", 
+            "Obadiah Stane's"
         ],
-        correctAns : 1,
+        correctAns : 0,
         correctGif : "https://media.giphy.com/media/DjclSiVtiB11C/giphy.gif",
         wrongGif : "https://media.giphy.com/media/wNbMrlmfatKqA/giphy.gif"
     }
@@ -58,7 +58,6 @@ function endGame(){
     gameOver = true;
 }
 
-//Load first question and start timer
 function loadQuestion(index){
     $("#question").empty();
     $("#question")
@@ -77,13 +76,6 @@ function loadQuestion(index){
 
     startTimer();
 }
-
-
-
-//player answers correct show correct gif
-//if timer runs out or wrong question is marked wrong, show wrong gif
-//then load next question
-
 
 function startTimer() {
     if (!clockRunning) {
