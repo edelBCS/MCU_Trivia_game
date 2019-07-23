@@ -57,11 +57,11 @@ var questions = [
             "Nidavellir"
         ],
         correctAns : 2,
-        correctGif : "",
-        wrongGif : "",
-        backgroundImg : "",
-        titleColor: "e7",
-        quizColor: "#e7",
+        correctGif : "https://media.giphy.com/media/l4FGni1RBAR2OWsGk/giphy.gif",
+        wrongGif : "https://media.giphy.com/media/YxwAwiJEqEoFi/giphy.gif",
+        backgroundImg : "https://pbs.twimg.com/media/D6Y7XvDWsAcVdn_.jpg",
+        titleColor: "#404b56e7",
+        quizColor: "#fadf7fe7",
     },
     {
         questionNo : 5,
