@@ -2,7 +2,12 @@ var questions = [
     {
         questionNo : 1,
         questionText : "text1",
-        answers : ["answer1", "answer2", "answer3", "answer4"],
+        answers : [
+            "answer1", 
+            "answer2", 
+            "answer3", 
+            "answer4"
+        ],
         correctAns : 1,
         correctGif : "",
         wrongGif : ""
