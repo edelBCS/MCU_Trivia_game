@@ -75,21 +75,20 @@ var currentQuestion = 0;
 loadQuestion(currentQuestion);
 
 $(document).on("click", ".answer button", function(){
+    //Does not allow button click if game is over
     if(gameOver === false){
-        
+        //check if the question is correct
         if ($(this).text() === questions[currentQuestion].answers[questions[currentQuestion].correctAns]){
             console.log("correct");
-            loadGIF(questions[currentQuestion].correctGif, true)
-            // ++score;
-            // nextQuestion();  
+            loadGIF(questions[currentQuestion].correctGif, true) 
         }else{
             console.log('wrong');
             loadGIF(questions[currentQuestion].wrongGif, false)
-            // nextQuestion();
         }
     }
 });
 
+//hide the buttons then loads the GIF based on answer and increments the score
 function loadGIF(questionGIF, correct){
     $(".answer").hide();
     $("#answerGIF").append($("<img>").attr("src", questionGIF));
@@ -103,12 +102,14 @@ function loadGIF(questionGIF, correct){
 
 }
 
+//gets the next question in the array and checks for last question
 function nextQuestion(){
     timeLeft = 11;
     ++currentQuestion;
     (currentQuestion === questions.length)?endGame():loadQuestion(currentQuestion);
 }
 
+//ends the game and displays final score
 function endGame(){
     console.log("Game Over")
     console.log(`Score: ${score}`)
@@ -116,6 +117,7 @@ function endGame(){
     gameOver = true;
 }
 
+//loads question/answers onto DOM and sets custom background and colors
 function loadQuestion(index){
     $("body")
         .css("background-image", "url(" + questions[currentQuestion].backgroundImg + ")")
@@ -133,7 +135,7 @@ function loadQuestion(index){
 
     $("#question").empty();
     $("#question")
-        .append($("<h2>")
+        .append($("<h3>")
             .text(`${questions[index].questionNo}. ${questions[index].questionText}`)  
             .addClass("text-center m-3")
             .append($("<hr>"))
@@ -150,6 +152,7 @@ function loadQuestion(index){
     startTimer();
 }
 
+//starts quiz timer
 function startTimer() {
     if (!clockRunning) {
       intervalId = setInterval(countTimer, 1000);
@@ -157,11 +160,13 @@ function startTimer() {
     }
   }
 
+//stops quiz timer
 function stopTimer() {
     clearInterval(intervalId);
     clockRunning = false;
 }
 
+//increments the timer
 function countTimer() {
     timeLeft--;
   
