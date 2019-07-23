@@ -11,7 +11,9 @@ var questions = [
         correctAns : 0,
         correctGif : "https://media.giphy.com/media/DjclSiVtiB11C/giphy.gif",
         wrongGif : "https://media.giphy.com/media/wNbMrlmfatKqA/giphy.gif",
-        backgroundImg : "https://images.vice.com/vice/images/articles/meta/2015/05/15/entendiendo-el-traje-de-ironman-1431728701.jpg"
+        backgroundImg : "https://images.vice.com/vice/images/articles/meta/2015/05/15/entendiendo-el-traje-de-ironman-1431728701.jpg",
+        titleColor: "#760c10e7",
+        quizColor: "#d7bb2be7"
     },
     {
         questionNo : 2,
@@ -20,42 +22,84 @@ var questions = [
             "Iron Man 2", 
             "Spiderman: Homecoming", 
             "Captain America: Civil War", 
-            "Avengers: Infinity Way"
+            "Avengers: Infinity War"
         ],
-        correctAns : 1,
+        correctAns : 0,
         correctGif : "https://66.media.tumblr.com/938ec4e7eba4d66a6b643b8815a5b3a4/tumblr_inline_p8ud2cI25d1tkli1e_500.gif",
-        wrongGif : "https://media.giphy.com/media/xT9IgoB4yOspMqzufu/giphy.gif"
+        wrongGif : "https://media.giphy.com/media/xT9IgoB4yOspMqzufu/giphy.gif",
+        backgroundImg : "https://i.ytimg.com/vi/BNcxTNrtRdk/maxresdefault.jpg",
+        titleColor: "#b11313e7",
+        quizColor: "#2b3784e7",
+    },
+    {
+        questionNo : 3,
+        questionText : "What is the name of Captain America's unit during WWII?",
+        answers : [
+            "Star Spangled Men", 
+            "Red White Blue", 
+            "America's Finest", 
+            "Howling Commando's"
+        ],
+        correctAns : 3,
+        correctGif : "https://media.giphy.com/media/1lk1IcVgqPLkA/giphy.gif",
+        wrongGif : "http://giphygifs.s3.amazonaws.com/media/dGQinrFi3BDIQ/giphy.gif",
+        backgroundImg : "https://fsmedia.imgix.net/11/91/65/66/aa08/4ef6/be12/964b648601b6/captain-america-the-winter-soldier.jpeg?rect=0%2C0%2C1920%2C960&auto=format%2Ccompress&dpr=2&w=650",
+        titleColor: "#c31D10e7",
+        quizColor: "#162ca2e7",
     }
+    // {
+    //     questionNo : ,
+    //     questionText : "",
+    //     answers : [
+    //         "", 
+    //         "", 
+    //         "", 
+    //         ""
+    //     ],
+    //     correctAns : 1,
+    //     correctGif : "",
+    //     wrongGif : "",
+    //     backgroundImg : "",
+    //     titleColor: "e7",
+    //     quizColor: "#e7",
+    // }
 ]
 
 var intervalId;
 var clockRunning = false;
 var gameOver = false;
-var timeLeft = 100;
+var timeLeft = 10;
 var score = 0;
 var currentQuestion = 0;
 
 loadQuestion(currentQuestion);
 
-$(document).on("click", ".answer", function(){
+$(document).on("click", ".answer button", function(){
     if(gameOver === false){
         
         if ($(this).text() === questions[currentQuestion].answers[questions[currentQuestion].correctAns]){
             console.log("correct");
-            loadGIF(questions[currentQuestion].correctGif)
-            ++score;
-            nextQuestion();  
+            loadGIF(questions[currentQuestion].correctGif, true)
+            // ++score;
+            // nextQuestion();  
         }else{
             console.log('wrong');
-            loadGIF(questions[currentQuestion].wrongGif)
-            nextQuestion();
+            loadGIF(questions[currentQuestion].wrongGif, false)
+            // nextQuestion();
         }
     }
 });
 
-function loadGIF(questionGIF){
+function loadGIF(questionGIF, correct){
+    $(".answer").hide();
     $("#answerGIF").append($("<img>").attr("src", questionGIF));
-    setTimeout(function(){$("#answerGIF").empty()}, 1000*5);
+    setTimeout(function(){
+        $("#answerGIF").empty();
+        if(correct)
+            ++score;
+        $(".answer").show();
+        nextQuestion();
+    }, 1000*5);
 
 }
 
@@ -73,13 +117,19 @@ function endGame(){
 }
 
 function loadQuestion(index){
-    $("#background")
+    $("body")
         .css("background-image", "url(" + questions[currentQuestion].backgroundImg + ")")
-        .css("height", "-webkit-fill-available")
-        .css("background-size", "100%")
-        .css("opacity", "0.5")
-        .css("z-index", "0")
-        .css("top", "0");
+        .css("height", "100vh")
+        .css("margin", "0")
+        .css("background-size", "cover")
+        .css("background-blend-mode", "soft-light")
+        .css("background-color", "#ffffff7d")
+        .css("z-index", "-1")
+        .css("margin", "0")
+        .css("background-repeat", "no-repeat");
+
+    $("#title").css("background-color", questions[currentQuestion].titleColor);
+    $("#quizArea").css("background-color", questions[currentQuestion].quizColor);
 
     $("#question").empty();
     $("#question")
@@ -93,7 +143,8 @@ function loadQuestion(index){
     $(".answer").each((i, element) => $(element)
         .append($("<button>")
             .text(questions[index].answers[i])
-            .addClass("btn btn-secondary m-2")
+            .addClass("btn btn-secondary m-2 p-4")
+            .css("width", "350px")
         ));
 
     startTimer();

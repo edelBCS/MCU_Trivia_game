@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Marvel Trivia Game</title>
 
+    <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
@@ -22,25 +23,25 @@
 </head>
 
 <body>
-    <div id="background">
+    <div>
         <div class="container">
-            <div class="jumbotron text-center mt-2 py-3">
+            <div id="title" class="jumbotron text-center mt-2 py-3">
                 <h1 class="display-4">Welcome to MCU Trivia!</h1>
                 <p class="lead">Test your trivia knowledge about Marvel Superhero's.</p>
                 <hr class="my-4">
                 <p id="timer">Question Timer: 10</p>
             </div>
 
-            <div class="row">
+            <div id="quizArea" class="row rounded pb-5 pt-3 mx-1">
                 <div id="question" class="col-12"></div>
-            </div>
 
-            <div id="answerArea" class="row">
-                <div class="answer col-12 text-center"></div>
-                <div class="answer col-12 text-center"></div>
-                <div class="answer col-12 text-center"></div>
-                <div class="answer col-12 text-center"></div>
-                <div id="answerGIF"></div>
+                <div id="answerArea" class="col-12">
+                    <div class="answer col-12 text-center"></div>
+                    <div class="answer col-12 text-center"></div>
+                    <div class="answer col-12 text-center"></div>
+                    <div class="answer col-12 text-center"></div>
+                    <div id="answerGIF"></div>
+                </div>
             </div>
 
         </div>

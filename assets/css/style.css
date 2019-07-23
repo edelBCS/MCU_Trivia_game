@@ -1,0 +1,18 @@
+body{
+    color: white !important;
+}
+
+#quizArea, #title{
+    background-blend-mode: "soft-light";
+    background-color: #ffffff7d;
+}
+
+
+.css("height", "100vh")
+        // .css("margin", "0")
+        // .css("background-size", "cover")
+        // .css("background-blend-mode", "soft-light")
+        // .css("background-color", "#ffffff7d")
+        // .css("z-index", "-1")
+        // .css("margin", "0")
+        // .css("background-repeat", "no-repeat");
