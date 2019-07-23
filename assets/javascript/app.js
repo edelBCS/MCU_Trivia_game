@@ -46,23 +46,119 @@ var questions = [
         backgroundImg : "https://fsmedia.imgix.net/11/91/65/66/aa08/4ef6/be12/964b648601b6/captain-america-the-winter-soldier.jpeg?rect=0%2C0%2C1920%2C960&auto=format%2Ccompress&dpr=2&w=650",
         titleColor: "#c31D10e7",
         quizColor: "#162ca2e7",
+    },
+    {
+        questionNo : 4,
+        questionText : "What is the name of Thor's Magic Belt?",
+        answers : [
+            "Storm Breaker", 
+            "Mjölnir", 
+            "Megingjörð", 
+            "Nidavellir"
+        ],
+        correctAns : 2,
+        correctGif : "",
+        wrongGif : "",
+        backgroundImg : "",
+        titleColor: "e7",
+        quizColor: "#e7",
+    },
+    {
+        questionNo : 5,
+        questionText : "When Hulk fight the Abomination, what part of NYC did this take place in? ",
+        answers : [
+            "Queens", 
+            "Bronx", 
+            "Harlem", 
+            "Brooklyn"
+        ],
+        correctAns : 2,
+        correctGif : "",
+        wrongGif : "",
+        backgroundImg : "",
+        titleColor: "e7",
+        quizColor: "#e7",
+    },
+    {
+        questionNo : 6,
+        questionText : "What is the name of Hawkeye's assasin alter-ego?",
+        answers : [
+            "The Hawk", 
+            "Ronin", 
+            "Mr. Budapest", 
+            "Quickshot"
+        ],
+        correctAns : 1,
+        correctGif : "",
+        wrongGif : "",
+        backgroundImg : "",
+        titleColor: "e7",
+        quizColor: "#e7",
+    },
+    {
+        questionNo : 7,
+        questionText : "Where was Black Widow trained to be an assasin?",
+        answers : [
+            "CIA", 
+            "SHEILD", 
+            "School for Gifted Children", 
+            "The Red Room"
+        ],
+        correctAns : 3,
+        correctGif : "",
+        wrongGif : "",
+        backgroundImg : "",
+        titleColor: "e7",
+        quizColor: "#e7",
+    },
+    {
+        questionNo : 8,
+        questionText : "What is Ant-Man's daughter's name?",
+        answers : [
+            "Kacey", 
+            "Cassie", 
+            "Susie", 
+            "Lacie"
+        ],
+        correctAns : 1,
+        correctGif : "",
+        wrongGif : "",
+        backgroundImg : "",
+        titleColor: "e7",
+        quizColor: "#e7",
+    },
+    {
+        questionNo : 9,
+        questionText : "what can Nick Fury never eat?",
+        answers : [
+            "Ketchup Mixed with Mayo", 
+            "Avocado's", 
+            "Diagonal Cut Toast", 
+            "Bacon on a Cheeseburger"
+        ],
+        correctAns : 2,
+        correctGif : "",
+        wrongGif : "",
+        backgroundImg : "",
+        titleColor: "e7",
+        quizColor: "#e7",
+    },
+    {
+        questionNo : 10,
+        questionText : "Who was not on the original Avenger's Team?",
+        answers : [
+            "War Machine", 
+            "Thor", 
+            "Hawk Eye", 
+            "Black Widow"
+        ],
+        correctAns : 0,
+        correctGif : "",
+        wrongGif : "",
+        backgroundImg : "",
+        titleColor: "e7",
+        quizColor: "#e7",
     }
-    // {
-    //     questionNo : ,
-    //     questionText : "",
-    //     answers : [
-    //         "", 
-    //         "", 
-    //         "", 
-    //         ""
-    //     ],
-    //     correctAns : 1,
-    //     correctGif : "",
-    //     wrongGif : "",
-    //     backgroundImg : "",
-    //     titleColor: "e7",
-    //     quizColor: "#e7",
-    // }
 ]
 
 var intervalId;
