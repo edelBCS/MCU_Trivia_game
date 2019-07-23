@@ -23,22 +23,23 @@
 
 <body>
     <div class="container">
-        <div class="row">
-            <header class="jumbotron h1">
-                MCU Trivia
-            </header>
+        <div class="jumbotron text-center mt-2 py-3">
+            <h1 class="display-4">Welcome to MCU Trivia!</h1>
+            <p class="lead">Test your trivia knowledge about Marvel Superhero's.</p>
+            <hr class="my-4">
+            <p id="timer">Question Timer: 10</p>
         </div>
 
         <div class="row">
-            <div id="timer" class="col-12"></div>
             <div id="question" class="col-12"></div>
         </div>
 
-        <div id="answerArea">
-            <div class="answer"></div>
-            <div class="answer"></div>
-            <div class="answer"></div>
-            <div class="answer"></div>
+        <div id="answerArea" class="row">
+            <div class="answer col-12 text-center"></div>
+            <div class="answer col-12 text-center"></div>
+            <div class="answer col-12 text-center"></div>
+            <div class="answer col-12 text-center"></div>
+            <div id="answerGIF"></div>
         </div>
 
     </div>

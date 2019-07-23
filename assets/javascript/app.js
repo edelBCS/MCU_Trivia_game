@@ -9,20 +9,8 @@ var questions = [
             "answer4"
         ],
         correctAns : 1,
-        correctGif : "",
-        wrongGif : ""
-    },
-    {
-        questionNo : 2,
-        questionText : "text2",
-        answers : ["answer1", "answer2", "answer3", "answer4"],
-        correctAns : 1
-    },
-    {
-        questionNo : 3,
-        questionText : "text3",
-        answers : ["answer1", "answer2", "answer3", "answer4"],
-        correctAns : 1
+        correctGif : "https://media.giphy.com/media/DjclSiVtiB11C/giphy.gif",
+        wrongGif : "https://media.giphy.com/media/wNbMrlmfatKqA/giphy.gif"
     }
 ]
 
@@ -40,17 +28,25 @@ $(document).on("click", ".answer", function(){
         
         if ($(this).text() === questions[currentQuestion].answers[questions[currentQuestion].correctAns]){
             console.log("correct");
+            loadGIF(questions[currentQuestion].correctGif)
             ++score;
             nextQuestion();  
         }else{
             console.log('wrong');
+            loadGIF(questions[currentQuestion].wrongGif)
             nextQuestion();
         }
     }
 });
 
+function loadGIF(questionGIF){
+    $("#answerGIF").append($("<img>").attr("src", questionGIF));
+    setTimeout(function(){$("#answerGIF").empty()}, 1000*5);
+
+}
+
 function nextQuestion(){
-    timeLeft = 10;
+    timeLeft = 11;
     ++currentQuestion;
     (currentQuestion === questions.length)?endGame():loadQuestion(currentQuestion);
 }
@@ -64,9 +60,21 @@ function endGame(){
 
 //Load first question and start timer
 function loadQuestion(index){
-    $("#question").text(questions[index].questionText)
-    $(".answer").each((i, element) => $(element).text(questions[index].answers[i]));
-    $("#timer").text(timeLeft);
+    $("#question").empty();
+    $("#question")
+        .append($("<h2>")
+            .text(`${questions[index].questionNo}. ${questions[index].questionText}`)  
+            .addClass("text-center m-3")
+            .append($("<hr>"))
+        );
+
+    $(".answer").each((i, element) => $(element).empty())
+    $(".answer").each((i, element) => $(element)
+        .append($("<button>")
+            .text(questions[index].answers[i])
+            .addClass("btn btn-secondary m-2")
+        ));
+
     startTimer();
 }
 
@@ -92,7 +100,8 @@ function stopTimer() {
 function countTimer() {
     timeLeft--;
   
-    $("#timer").text(timeLeft);
+    $("#timer").text(`Question Timer: ${timeLeft}`);
+
     if (timeLeft === 0){
         stopTimer();
         nextQuestion();
