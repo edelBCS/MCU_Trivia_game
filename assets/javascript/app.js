@@ -191,13 +191,15 @@ function loadGIF(questionGIF, correct){
     (correct)?$("#timer").text(`CORRECT!!!`):$("#timer").text(`WRONG!!!`);
     $(".answer").hide();
     $("#answerGIF").append($("<img>").attr("src", questionGIF));
+    console.log();
+    (!correct)?$("#answerGIF").append($("<p>").text(`Correct Answer: ${questions[currentQuestion].answers[questions[currentQuestion].correctAns]}`)):"";
     setTimeout(function(){
         $("#answerGIF").empty();
         if(correct)
             ++score;
         $(".answer").show();
         nextQuestion();
-    }, 1000*5);
+    }, 1000*3.5);
 
 }
 
@@ -214,6 +216,10 @@ function endGame(){
     console.log(`Score: ${score}`)
     stopTimer();
     gameOver = true;
+    $("#timer").text(`Game Over!!`)
+    $("#answerArea").empty();
+    $("#question h3").text(`Score: ${score}/10`);
+    $("#answerArea").html(`<iframe width="560" height="315" src="https://www.youtube.com/embed/3DrahZJyVuk?controls=0" frameborder="0" autoplay=1 allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`);
 }
 
 //loads question/answers onto DOM and sets custom background and colors
@@ -272,8 +278,8 @@ function countTimer() {
     $("#timer").text(`Question Timer: ${timeLeft}`);
 
     if (timeLeft === 0){
-        stopTimer();
-        nextQuestion();
+        stopTimer();console.log('wrong');
+        loadGIF(questions[currentQuestion].wrongGif, false);
     }
   }
   
