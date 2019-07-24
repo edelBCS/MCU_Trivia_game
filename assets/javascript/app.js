@@ -73,11 +73,11 @@ var questions = [
             "Brooklyn"
         ],
         correctAns : 2,
-        correctGif : "",
-        wrongGif : "",
-        backgroundImg : "",
-        titleColor: "e7",
-        quizColor: "#e7",
+        correctGif : "https://media.giphy.com/media/aS8ypUweGOXMA/giphy.gif",
+        wrongGif : "https://media.giphy.com/media/124NfbeKjF8CwU/giphy.gif",
+        backgroundImg : "https://i.ytimg.com/vi/O6cV0S0kRzk/maxresdefault.jpg",
+        titleColor: "#5c9c31e7",
+        quizColor: "#cfcfcfe7",
     },
     {
         questionNo : 6,
@@ -89,11 +89,11 @@ var questions = [
             "Quickshot"
         ],
         correctAns : 1,
-        correctGif : "",
-        wrongGif : "",
-        backgroundImg : "",
-        titleColor: "e7",
-        quizColor: "#e7",
+        correctGif : "http://giphygifs.s3.amazonaws.com/media/10wbsiEdvI4nrq/giphy.gif",
+        wrongGif : "https://media.giphy.com/media/VWdToiFg7HDkQ/giphy.gif",
+        backgroundImg : "https://www.wallpaperup.com/uploads/wallpapers/2014/02/18/259346/1ddec10629dae3b2e67bb29e52e524ff-700.jpg",
+        titleColor: "#4a4277e7",
+        quizColor: "#000000e7",
     },
     {
         questionNo : 7,
@@ -105,11 +105,11 @@ var questions = [
             "The Red Room"
         ],
         correctAns : 3,
-        correctGif : "",
-        wrongGif : "",
-        backgroundImg : "",
-        titleColor: "e7",
-        quizColor: "#e7",
+        correctGif : "https://media.giphy.com/media/dmi9bckvFNS48/giphy.gif",
+        wrongGif : "https://media.giphy.com/media/pRcfgTKDfDMCQ/giphy.gif",
+        backgroundImg : "https://imgix.bustle.com/rehost/2016/9/13/815526e0-056f-4b14-bb53-232ed32726a0.jpg?w=970&h=546&fit=crop&crop=faces&auto=format&q=70",
+        titleColor: "000000e7",
+        quizColor: "#7a1f1ee7",
     },
     {
         questionNo : 8,
@@ -121,11 +121,11 @@ var questions = [
             "Lacie"
         ],
         correctAns : 1,
-        correctGif : "",
-        wrongGif : "",
-        backgroundImg : "",
-        titleColor: "e7",
-        quizColor: "#e7",
+        correctGif : "https://media.giphy.com/media/VIybTqiAz8E5W/giphy.gif",
+        wrongGif : "https://media.giphy.com/media/kZwjiegeLhu3C/giphy.gif",
+        backgroundImg : "https://images3.alphacoders.com/934/934658.jpg",
+        titleColor: "#9d152ce7",
+        quizColor: "#868a93e7",
     },
     {
         questionNo : 9,
@@ -137,11 +137,11 @@ var questions = [
             "Bacon on a Cheeseburger"
         ],
         correctAns : 2,
-        correctGif : "",
-        wrongGif : "",
-        backgroundImg : "",
-        titleColor: "e7",
-        quizColor: "#e7",
+        correctGif : "http://giphygifs.s3.amazonaws.com/media/rfCFfFLDiVHj2/giphy.gif",
+        wrongGif : "http://giphygifs.s3.amazonaws.com/media/PnwcgZJZ8jdbq/giphy.gif",
+        backgroundImg : "https://wallpapercave.com/wp/wp2013757.jpg",
+        titleColor: "#717171e7",
+        quizColor: "#cbcbcbe7",
     },
     {
         questionNo : 10,
@@ -153,11 +153,11 @@ var questions = [
             "Black Widow"
         ],
         correctAns : 0,
-        correctGif : "",
-        wrongGif : "",
-        backgroundImg : "",
-        titleColor: "e7",
-        quizColor: "#e7",
+        correctGif : "http://giphygifs.s3.amazonaws.com/media/2IWmVTeANUdJm/giphy.gif",
+        wrongGif : "https://media.giphy.com/media/NAuDNFyCrFrRm/giphy.gif",
+        backgroundImg : "https://www.geeknoob.com/wp-content/uploads/Endgame-wallpapers-HD-Images-4K-Marvel-Studios-Avengers-Background.jpg",
+        titleColor: "#717171e7",
+        quizColor: "#cbcbcbe7",
     }
 ]
 
@@ -186,6 +186,9 @@ $(document).on("click", ".answer button", function(){
 
 //hide the buttons then loads the GIF based on answer and increments the score
 function loadGIF(questionGIF, correct){
+    stopTimer();
+    timeLeft = 10;
+    (correct)?$("#timer").text(`CORRECT!!!`):$("#timer").text(`WRONG!!!`);
     $(".answer").hide();
     $("#answerGIF").append($("<img>").attr("src", questionGIF));
     setTimeout(function(){
