@@ -65,7 +65,7 @@ var questions = [
     },
     {
         questionNo : 5,
-        questionText : "When Hulk fight the Abomination, what part of NYC did this take place in? ",
+        questionText : "When Hulk fought the Abomination, what part of NYC did this take place in? ",
         answers : [
             "Queens", 
             "Bronx", 
@@ -168,7 +168,19 @@ var timeLeft = 10;
 var score = 0;
 var currentQuestion = 0;
 
-loadQuestion(currentQuestion);
+newGame();
+
+function newGame(){
+    $("iframe").remove();
+    $(".answer").show();
+    $("#restartBtn").hide();
+    stopTimer();
+    gameOver = false;
+    timeLeft = 11;
+    score = 0;
+    currentQuestion = 0;
+    loadQuestion(currentQuestion);
+}
 
 $(document).on("click", ".answer button", function(){
     //Does not allow button click if game is over
@@ -199,7 +211,7 @@ function loadGIF(questionGIF, correct){
             ++score;
         $(".answer").show();
         nextQuestion();
-    }, 1000*3.5);
+    }, 1000*3);
 
 }
 
@@ -217,10 +229,14 @@ function endGame(){
     stopTimer();
     gameOver = true;
     $("#timer").text(`Game Over!!`)
-    $("#answerArea").empty();
+    $(".answer").hide();
     $("#question h3").text(`Score: ${score}/10`);
-    $("#answerArea").html(`<iframe width="560" height="315" src="https://www.youtube.com/embed/3DrahZJyVuk?controls=0" frameborder="0" autoplay=1 allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`);
+    $("#answerArea").append(`<iframe width="560" height="315" src="https://www.youtube.com/embed/3DrahZJyVuk?controls=0" frameborder="0" autoplay=1 allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`);
+    //$("#answerArea").append($("<button>").addClass("restartBtn btn btn-secondary col-12 text-center").text("Restart Game"));
+    $("#restartBtn").show();
 }
+
+$("#restartBtn").on("click", function(){newGame()});
 
 //loads question/answers onto DOM and sets custom background and colors
 function loadQuestion(index){
